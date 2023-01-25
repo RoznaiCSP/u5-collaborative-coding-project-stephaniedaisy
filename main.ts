@@ -29,22 +29,22 @@ function chooseHero () {
         pause(500)
     }
     mySprite2 = sprites.create(img`
-        . . . . . . 5 . 5 . . . . . . . 
-        . . . . . f 5 5 5 f f . . . . . 
-        . . . . f 1 5 2 5 1 6 f . . . . 
-        . . . f 1 6 6 6 6 6 1 6 f . . . 
-        . . . f 6 6 f f f f 6 1 f . . . 
-        . . . f 6 f f d d f f 6 f . . . 
-        . . f 6 f d f d d f d f 6 f . . 
-        . . f 6 f d 3 d d 3 d f 6 f . . 
-        . . f 6 6 f d d d d f 6 6 f . . 
-        . f 6 6 f 3 f f f f 3 f 6 6 f . 
-        . . f f d 3 5 3 3 5 3 d f f . . 
-        . . f d d f 3 5 5 3 f d d f . . 
-        . . . f f 3 3 3 3 3 3 f f . . . 
-        . . . f 3 3 5 3 3 5 3 3 f . . . 
+        . . . . . . 5 2 2 5 . . . . . . 
+        . . . . . f 5 5 5 5 f . . . . . 
+        . . . . f c 5 2 2 5 c f . . . . 
+        . . . f c c c c c c c c f . . . 
+        . . . f c c f f f f c c f . . . 
+        . . . f c f f d d f f c f . . . 
+        . . f c f d f d d f d f c f . . 
+        . . f c f d 3 d d 3 d f c f . . 
+        . . f c c f d d d d f c c f . . 
+        . f c c f 8 f f f f 8 f c c f . 
+        . . f f 8 8 8 8 8 8 8 8 f f . 3 
+        . . f 2 d f 8 8 8 8 f d 2 f . . 
+        . . . f f 8 8 8 8 8 8 f f . . . 
+        . . . f 8 8 8 8 8 8 8 8 f . . . 
         . . . f f f f f f f f f f . . . 
-        . . . . . f f . . f f . . . . . 
+        . . . . . a 2 . . 2 a . . . . . 
         `, SpriteKind.Player)
     mySprite2.setPosition(10, 59)
     while (mySprite2.x < 75) {
