@@ -2,19 +2,19 @@ function chooseHero () {
     // change sprite later to agree with Daisy 
     mySprite = sprites.create(img`
         . . . . . . f f f f . . . . . . 
-        . . . . f f f 2 2 f f f . . . . 
-        . . . f f f 2 2 2 2 f f f . . . 
+        . . . . f f f e e f f f . . . . 
+        . . . f f f e e e e f f f . . . 
         . . f f f e e e e e e f f f . . 
-        . . f f e 2 2 2 2 2 2 e e f . . 
-        . . f e 2 f f f f f f 2 e f . . 
-        . . f f f f e e e e f f f f . . 
-        . f f e f b f 4 4 f b f e f f . 
-        . f e e 4 1 f d d f 1 4 e e f . 
-        . . f e e d d d d d d e e f . . 
+        . . f f e e e e e e e e f f . . 
+        . . f e e e e e e e e e e f . . 
+        . . f e f 8 8 f f 8 8 f e f . . 
+        . f f e 8 b f 8 8 f b 8 e f f . 
+        . f e e 8 1 f 8 8 f 1 8 e e f . 
+        . . f e 8 8 8 4 4 8 8 8 e f . . 
         . . . f e e 4 4 4 4 e e f . . . 
-        . . e 4 f 2 2 2 2 2 2 f 4 e . . 
-        . . 4 d f 2 2 2 2 2 2 f d 4 . . 
-        . . 4 4 f 4 4 5 5 4 4 f 4 4 . . 
+        . . f 8 f 6 f 5 5 f 6 f 8 f . . 
+        . . f f f 6 8 f f 8 6 f f f . . 
+        . . 4 4 f 6 8 6 6 8 6 f 4 4 . . 
         . . . . . f f f f f f . . . . . 
         . . . . . f f . . f f . . . . . 
         `, SpriteKind.Player)
@@ -28,6 +28,27 @@ function chooseHero () {
         mySprite.x += 17
         pause(500)
     }
+    // change sprite later to agree with Daisy 
+    mySprite = sprites.create(img`
+        . . . . . . f f f f . . . . . . 
+        . . . . f f f e e f f f . . . . 
+        . . . f f f e e e e f f f . . . 
+        . . f f f e e e e e e f f f . . 
+        . . f f e e e e e e e e f f . . 
+        . . f e e e e e e e e e e f . . 
+        . . f e f 8 8 f f 8 8 f e f . . 
+        . f f e 8 b f 8 8 f b 8 e f f . 
+        . f e e 8 1 f 8 8 f 1 8 e e f . 
+        . . f e 8 8 8 4 4 8 8 8 e f . . 
+        . . . f e e 4 4 4 4 e e f . . . 
+        . . f 8 f 6 f 5 5 f 6 f 8 f . . 
+        . . f f f 6 8 f f 8 6 f f f . . 
+        . . 4 4 f 6 8 6 6 8 6 f 4 4 . . 
+        . . . . . f f f f f f . . . . . 
+        . . . . . f f . . f f . . . . . 
+        `, SpriteKind.Player)
+    mySprite.setPosition(10, 59)
+    pause(100)
     mySprite2 = sprites.create(img`
         . . . . . . 5 . 5 . . . . . . . 
         . . . . . f 5 5 5 f f . . . . . 
