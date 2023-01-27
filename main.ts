@@ -184,4 +184,5 @@ scene.setBackgroundImage(img`
 game.splash("Choose your hero!")
 chooseHero()
 story.showPlayerChoices("Sprite 1", "Sprite 2")
+// asks for hero name
 let heroName = game.askForString("What is the hero's name?")
