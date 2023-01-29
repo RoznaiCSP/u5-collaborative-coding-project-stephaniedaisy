@@ -3,7 +3,8 @@
     "description": "",
     "dependencies": {
         "device": "*",
-        "arcade-story": "github:microsoft/arcade-storytelling#v1.0.3"
+        "arcade-story": "github:microsoft/arcade-storytelling#v1.0.3",
+        "sprite-scaling": "*"
     },
     "files": [
         "main.blocks",
@@ -15,7 +16,7 @@
         "test.ts"
     ],
     "targetVersions": {
-        "target": "1.11.37",
+        "target": "1.12.17",
         "targetId": "arcade"
     },
     "supportedTargets": [

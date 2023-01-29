@@ -1,3 +1,64 @@
+function chooseSideKick (mySprite: Sprite) {
+    // change sprite later to agree with Daisy 
+    sideKick1 = sprites.create(img`
+        . . . . . . f f f f f f . . . . 
+        . . . . . f 6 6 f 5 f 6 f . . . 
+        . . . . f 6 6 6 f f f 6 6 f . . 
+        . . . f 6 6 6 6 6 f 6 6 6 6 f . 
+        . . . f 6 6 6 f 6 6 6 6 f 6 f . 
+        . . . f 6 6 6 6 f 6 6 f 6 6 f . 
+        . . . f 5 5 6 6 6 6 6 6 5 5 f . 
+        . . f f 6 6 6 f 6 6 6 6 6 f . . 
+        . f 6 6 f 6 6 6 f f f f f . . . 
+        f 6 f 6 6 f f 6 6 6 6 2 6 f . . 
+        f f 6 f 6 6 f f f 6 6 2 6 6 f . 
+        . . f 6 f 6 f f f 6 f f f f f f 
+        . . f 6 6 f 6 f 6 f 5 5 5 5 5 f 
+        . . f f 6 6 f 6 f 5 5 5 5 5 f f 
+        . . . f 6 6 6 f 5 5 5 5 5 f f . 
+        . . . . f f f f f f f f f f . . 
+        `, SpriteKind.Player)
+    scaling.scaleByPixels(sideKick1, 20, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+    sideKick1.setPosition(10, 59)
+    while (sideKick1.x < 75) {
+        sideKick1.x += 17
+        pause(500)
+    }
+    pause(5000)
+    for (let index = 0; index < 8; index++) {
+        sideKick1.x += 17
+        pause(500)
+    }
+    sideKick2 = sprites.create(img`
+        . . . . . . . . . f f f f . . . 
+        . . . . . . . . . f f f f . . . 
+        . . . . . . . . . 1 9 9 1 . . . 
+        . . . . . . . . . f f f f . . . 
+        . . . . . . . f f 1 9 9 1 f f . 
+        . . . . . . . . . f 1 1 f . . . 
+        . . . . . . . . . 1 4 4 1 . . . 
+        . . . . . . . . . 1 1 1 1 . . . 
+        . . . . . . . . . . 2 2 . . . . 
+        . . . . . . . . . 1 2 1 . . . . 
+        . . . . . . . . 1 1 1 1 . . . . 
+        . . . . . . . 1 1 b 1 9 . . . . 
+        . . . . . . 1 1 b 1 1 1 . . . . 
+        . . . 1 1 1 1 b 1 1 9 1 . . . . 
+        . . . 1 9 9 1 1 1 9 9 9 . . . . 
+        . . . . . . e . . e . . . . . . 
+        `, SpriteKind.Player)
+    scaling.scaleByPixels(sideKick2, 20, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+    sideKick2.setPosition(10, 59)
+    while (sideKick2.x < 75) {
+        sideKick2.x += 17
+        pause(500)
+    }
+    pause(5000)
+    for (let index = 0; index < 8; index++) {
+        sideKick2.x += 17
+        pause(500)
+    }
+}
 function chooseHero () {
     // change sprite later to agree with Daisy 
     mySprite = sprites.create(img`
@@ -18,6 +79,7 @@ function chooseHero () {
         . . . f f f f f f . . . . 
         . . . f f . . f f . . . . 
         `, SpriteKind.Player)
+    scaling.scaleByPixels(mySprite, 20, ScaleDirection.Uniformly, ScaleAnchor.Middle)
     mySprite.setPosition(10, 59)
     while (mySprite.x < 75) {
         mySprite.x += 17
@@ -46,6 +108,7 @@ function chooseHero () {
         . . . f f f f f f f f f f . . . 
         . . . . . a 2 . . 2 a . . . . . 
         `, SpriteKind.Player)
+    scaling.scaleByPixels(mySprite2, 20, ScaleDirection.Uniformly, ScaleAnchor.Middle)
     mySprite2.setPosition(10, 59)
     while (mySprite2.x < 75) {
         mySprite2.x += 17
@@ -58,6 +121,8 @@ function chooseHero () {
     }
 }
 let mySprite2: Sprite = null
+let sideKick2: Sprite = null
+let sideKick1: Sprite = null
 let mySprite: Sprite = null
 scene.setBackgroundImage(img`
     8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888b888886888888588888888888888b8888888888888
@@ -186,3 +251,7 @@ chooseHero()
 story.showPlayerChoices("Sprite 1", "Sprite 2")
 // asks for hero name
 let heroName = game.askForString("What is the hero's name?")
+chooseSideKick(mySprite)
+story.showPlayerChoices("Sprite 1", "Sprite 2")
+// asks for hero name
+let sideKick = game.askForString("what is your sidekick's name")
