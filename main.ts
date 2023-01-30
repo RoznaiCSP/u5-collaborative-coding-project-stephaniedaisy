@@ -19,12 +19,15 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . 1 3 . 3 3 . . . . . 
         . . . . . . . 1 1 3 . . . . . . 
         . . . . . . . . . . . . . . . . 
-        `, mySprite, 100, 0)
+        `, hero1, 100, 0)
     scaling.scaleByPixels(projectile, 7, ScaleDirection.Uniformly, ScaleAnchor.Middle)
 })
-function chooseHero () {
+/**
+ * B is for shooting
+ */
+function chooseHero (Hero: Sprite) {
     // change sprite later to agree with Daisy 
-    mySprite = sprites.create(img`
+    hero1 = sprites.create(img`
         . . . . f f f f . . . . . 
         . . f f f f f f f f . . . 
         . f f f f f f c f f f . . 
@@ -42,8 +45,8 @@ function chooseHero () {
         . . . f f f f f f . . . . 
         . . . f f . . f f . . . . 
         `, SpriteKind.Player)
-    mySprite.setPosition(29, 44)
-    scaling.scaleByPixels(mySprite, 20, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+    hero1.setPosition(29, 44)
+    scaling.scaleByPixels(hero1, 20, ScaleDirection.Uniformly, ScaleAnchor.Middle)
     mySprite2 = sprites.create(img`
         . . . . . . 5 2 2 5 . . . . . . 
         . . . . . f 5 5 5 5 f . . . . . 
@@ -65,12 +68,12 @@ function chooseHero () {
     mySprite2.setPosition(109, 44)
     scaling.scaleByPixels(mySprite2, 20, ScaleDirection.Uniformly, ScaleAnchor.Middle)
     pause(5000)
-    mySprite.destroy()
+    hero1.destroy()
     mySprite2.destroy()
     story.showPlayerChoices("Hero 1", "Hero 2")
     if (story.checkLastAnswer("Hero 1")) {
         // change sprite later to agree with Daisy 
-        mySprite = sprites.create(img`
+        hero1 = sprites.create(img`
             . . . . f f f f . . . . . 
             . . f f f f f f f f . . . 
             . f f f f f f c f f f . . 
@@ -88,19 +91,20 @@ function chooseHero () {
             . . . f f f f f f . . . . 
             . . . f f . . f f . . . . 
             `, SpriteKind.Player)
-        scaling.scaleByPixels(mySprite, 20, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-        mySprite.setPosition(10, 59)
-        while (mySprite.x < 75) {
-            mySprite.x += 17
+        scaling.scaleByPixels(hero1, 20, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+        hero1.setPosition(10, 59)
+        while (hero1.x < 75 || hero1.x < 100) {
+            hero1.x += 17
             pause(500)
         }
         pause(5000)
         for (let index = 0; index < 8; index++) {
-            mySprite.x += 17
+            hero1.x += 17
             pause(500)
         }
         // asks for hero name
         heroName = game.askForString("What is the hero's name?")
+        heroName = HeroName(heroName)
         storyLine()
     } else {
         mySprite2 = sprites.create(img`
@@ -353,13 +357,13 @@ function storyLine () {
         `, SpriteKind.Enemy)
     scaling.scaleByPixels(grapeMan, 20, ScaleDirection.Uniformly, ScaleAnchor.Middle)
     grapeMan.setPosition(108, 59)
-    grapeMan.setVelocity(randint(0, 10), randint(0, 10))
+    grapeMan.follow(hero1, 50)
     statusbar = statusbars.create(60, 4, StatusBarKind.EnemyHealth)
     statusbar.attachToSprite(grapeMan, 5, 0)
     statusbar.setColor(2, 5, 0)
     statusbar.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
     // change sprite later to agree with Daisy 
-    mySprite = sprites.create(img`
+    hero1 = sprites.create(img`
         . . . . f f f f . . . . . 
         . . f f f f f f f f . . . 
         . f f f f f f c f f f . . 
@@ -377,10 +381,10 @@ function storyLine () {
         . . . f f f f f f . . . . 
         . . . f f . . f f . . . . 
         `, SpriteKind.Player)
-    mySprite.setPosition(24, 56)
-    scaling.scaleByPixels(mySprite, 15, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-    controller.moveSprite(mySprite)
-    mySprite.setStayInScreen(true)
+    hero1.setPosition(24, 56)
+    scaling.scaleByPixels(hero1, 15, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+    controller.moveSprite(hero1)
+    hero1.setStayInScreen(true)
     grapeMan.setStayInScreen(true)
 }
 function storyLine2 () {
@@ -622,8 +626,11 @@ function storyLine2 () {
     mySprite2.setPosition(24, 56)
     scaling.scaleByPixels(mySprite2, 15, ScaleDirection.Uniformly, ScaleAnchor.Middle)
     controller.moveSprite(mySprite2)
-    mySprite.setStayInScreen(true)
+    hero1.setStayInScreen(true)
     grapeMan.setStayInScreen(true)
+}
+function HeroName (text: string) {
+    return "" + heroName
 }
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     statusbars.getStatusBarAttachedTo(StatusBarKind.EnemyHealth, grapeMan).value += -1
@@ -632,8 +639,8 @@ let grapeMan: Sprite = null
 let statusbar: StatusBarSprite = null
 let heroName = ""
 let mySprite2: Sprite = null
-let mySprite: Sprite = null
 let projectile: Sprite = null
+let hero1: Sprite = null
 effects.bubbles.startScreenEffect()
 pause(5000)
 game.setDialogFrame(img`
@@ -831,4 +838,4 @@ scene.setBackgroundImage(img`
     `)
 game.splash("Choose your hero!")
 effects.bubbles.endScreenEffect()
-chooseHero()
+chooseHero(hero1)
